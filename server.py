@@ -1,4 +1,4 @@
-from flask import Flask, render_template, session, redirect
+from flask import Flask, render_template, session, redirect, url_for
 
 app = Flask(__name__)
 app.secret_key = 'counter' #used to encrypt data
@@ -15,7 +15,10 @@ def index():
         session['views'] += 1
     return render_template('index.html', count=session['views'])
 
-
+@app.route('/destroy_session')
+def destroy():
+    session.clear()
+    return redirect(url_for('index'))
 
 
 
