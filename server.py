@@ -13,12 +13,21 @@ def index():
       session['views'] = 0
     else:
         session['views'] += 1
-    return render_template('index.html', count=session['views'])
+    return render_template('index.html')
 
 @app.route('/destroy_session')
 def destroy():
     session.clear()
     return redirect(url_for('index'))
+
+@app.route('/addTwo')
+def addtwo():
+    if 'views' not in session:
+        session['views'] = 0
+    else: 
+        session['views'] += 2
+    return render_template('index.html')
+  
 
 
 
