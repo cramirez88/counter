@@ -26,12 +26,12 @@ def addtwo():
         session['views'] = 0
     else: 
         session['views'] += 2
-    return render_template('index.html')
+    return redirect('/')
 
 @app.route('/reset')
 def reset():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect('/')
   
 
 
